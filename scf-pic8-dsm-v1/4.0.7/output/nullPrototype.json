@@ -1,0 +1,43 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_dsm_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-dsm-v1",
+                "version": "1.0.0"
+            },
+            "isRequired": true
+        },
+        "initializer_system": {
+            "interfaceId": {
+                "name": "initializer-system",
+                "version": "^0"
+            }
+        },
+        "pin_standard": {
+            "interfaceId": {
+                "name": "pin-standard",
+                "version": "^0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1"
+            }
+        }
+    },
+    "exports": {
+        "dsm_general_params": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "dsm-general-params",
+                        "version": "0.1.0"
+                    }
+                }
+            ]
+        }
+    },
+    "isEntryPoint": true
+}

@@ -1,0 +1,223 @@
+{
+    "name": "@mchp-mcc/scf-pic8-dma-v1",
+    "version": "1.2.0",
+    "scf": {
+        "reducer": "auto",
+        "creator": "output/creator.js",
+        "processor": "output/processor.js",
+        "nullPrototype": "output/nullPrototype.json",
+        "views": {
+            "main": "auto"
+        },
+        "displayName": "DMA",
+        "category": "Drivers/DMA",
+        "autoProcessor": "output/autoProcessor.js",
+        "autoCreator": "output/autoCreator.js",
+        "prototype": {
+            "payload": null,
+            "imports": {
+                "scf_pic8_dma_v1": {
+                    "interfaceId": {
+                        "name": "scf-pic8-dma-v1",
+                        "version": "1.0.0"
+                    },
+                    "isRequired": true
+                },
+                "cpu_interface": {
+                    "interfaceId": {
+                        "name": "cpu-interface",
+                        "version": "1.0.0"
+                    }
+                },
+                "interrupt_standard": {
+                    "interfaceId": {
+                        "name": "interrupt-standard",
+                        "version": "^1.0.1"
+                    }
+                },
+                "initializer_system": {
+                    "interfaceId": {
+                        "name": "initializer-system",
+                        "version": "^0.*"
+                    }
+                },
+                "device_meta": {
+                    "interfaceId": {
+                        "name": "device-meta",
+                        "version": "^1.0.0"
+                    }
+                }
+            },
+            "exports": {
+                "dma_standard_interface": {
+                    "interfaces": [
+                        {
+                            "interfaceId": {
+                                "name": "dma-standard-interface",
+                                "version": "1.0.2"
+                            }
+                        }
+                    ],
+                    "handleLimit": 1
+                }
+            },
+            "isEntryPoint": true
+        }
+    },
+    "scf-automodule": {
+        "peripheral": {
+            "deviceName": "PIC18F47Q43",
+            "interfaceId": {
+                "name": "scf-pic8-dma-v1",
+                "version": "1.0.0"
+            },
+            "instance": "any"
+        },
+        "shouldNotifyOnDeploy": false,
+        "isRequired": true,
+        "mode": "standard",
+        "hookPaths": {
+            "processor": "generated_module/src/processor.ts",
+            "creator": "generated_module/src/creator.ts"
+        }
+    },
+    "jenkinsPipeline": "MCU8_DS_PIPELINE_2XY",
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "scripts": {
+        "build": "gulp build --gulpfile config/gulpfile.js --cwd .",
+        "build-dev": "gulp build --gulpfile config/gulpfile.js --buildDev --cwd .",
+        "build-prod": "gulp build --gulpfile config/gulpfile.js --production --cwd .",
+        "start": "gulp start --gulpfile config/gulpfile.js --cwd .",
+        "test": "jest",
+        "create-auto-module": "gulp create-auto-module --gulpfile config/gulpfile.js --cwd .",
+        "build-run-dir": "node config/extract-run-directory.js",
+        "build-latest-run-dir": "yarn add @microchip/run-directory && node config/extract-run-directory.js",
+        "dist": "gulp dist --gulpfile config/gulpfile.js --cwd .",
+        "lint:nofix": "eslint \"./src/**/*.{ts,tsx}\" --quiet",
+        "lint": "tsc --noEmit && yarn lint:nofix --fix",
+        "updateProject": "node config/create-auto-module.js --updateProject=true",
+        "update-auto-module": "yarn add @microchip/scf-automodule -D && yarn upgrade @microchip/melody-automodule-interface && yarn updateProject",
+        "profile": "jest profile",
+        "release": "yarn build && yarn test && node -e 'require(\"./config/scf-project-scripts\").releaseProject()'",
+        "test:itf:all": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --sf=dma.major.test.ts --df=\"PIC18F57Q43|PIC18F57K42|PIC18F16Q41|PIC18F16Q20\"",
+        "test:itf:dev": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --sf=dma.major.test.ts --df=\"PIC18F57Q43\"",
+        "postprocess": "node config/appendPrototype.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsc --noEmit && lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./src/**/*.{ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "files": [
+        "output/**/*",
+        "config.json"
+    ],
+    "jest": {
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/run/",
+            "/generated_module/examples/",
+            "/lib/",
+            "/tests/itf/"
+        ],
+        "modulePathIgnorePatterns": [
+            "<rootDir>/run"
+        ],
+        "preset": "ts-jest",
+        "collectCoverage": true,
+        "coverageThreshold": {
+            "./src": {
+                "branches": 80,
+                "functions": 80,
+                "lines": 80,
+                "statements": 80
+            }
+        }
+    },
+    "dependencies": {
+        "@microchip/api-prefix-registration": "^0.1.0",
+        "@microchip/dma-standard-interface": "^1.0.2",
+        "@microchip/dmamodule-standard-interface": "^0.1.2",
+        "@microchip/fosc-hz": "^0.1.2",
+        "@microchip/interrupt-standard": "^1.0.1",
+        "@microchip/pin-standard": "^0.6.0",
+        "@microchip/pins-interface": "^1.0.1",
+        "@microchip/scf-common": "^3.22.7",
+        "@microchip/scf-device": "^8.11.2",
+        "@microchip/scf-integration-test": "^1.0.0",
+        "@microchip/scf-interface": "^1.4.0",
+        "@microchip/scf-register-view-helper": "^2.8.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.6",
+        "@babel/plugin-proposal-class-properties": "^7.10.1",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/preset-react": "^7.9.4",
+        "@babel/preset-typescript": "^7.9.0",
+        "@mchp-mcc/pic-8bit": "^5.28.2",
+        "@mchp-mcc/pic-8bit-types": "^5.28.2",
+        "@microchip/ccl-itf": "^1.8.0",
+        "@microchip/initializer-system": "^0.5.4",
+        "@microchip/melody-automodule-interface": "^1.14.5",
+        "@microchip/run-directory": "^4.4.0",
+        "@microchip/scf-automodule": "^5.14.8",
+        "@microchip/scf-automodule-impl": "^1.16.7",
+        "@microchip/scf-autoview": "^3.32.5",
+        "@microchip/scf-project-scripts": "^1.0.0",
+        "@microchip/scf-server": "^1.5.10",
+        "@types/core-js": "^2.5.1",
+        "@types/enzyme": "^3.9.3",
+        "@types/jest": "^24.0.14",
+        "@types/lodash.filter": "^4.6.6",
+        "@types/lodash.find": "^4.6.6",
+        "@types/lodash.map": "^4.6.13",
+        "@types/node": "^12.0.10",
+        "@types/properties-reader": "^0.0.1",
+        "@types/semver": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^3.2.0",
+        "@typescript-eslint/parser": "^3.6.0",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-named-asset-import": "^0.3.2",
+        "babel-preset-react-app": "^9.0.0",
+        "del": "^4.1.1",
+        "eslint": "^7.4.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.20.0",
+        "fork-ts-checker-webpack-plugin": "^8.0.0",
+        "fs": "^0.0.1-security",
+        "gulp": "^4.0.2",
+        "gulp-changed": "^4.0.2",
+        "gulp-cli": "^2.2.0",
+        "gulp-if": "^3.0.0",
+        "gulp-typescript": "^5.0.1",
+        "hard-source-webpack-plugin": "^0.13.1",
+        "husky": "^4.2.4",
+        "is-wsl": "^2.1.0",
+        "jest": "^24.8.0",
+        "jest-html-reporter": "^2.5.0",
+        "jest-pnp-resolver": "^1.2.1",
+        "lint-staged": "^10.2.2",
+        "pnp-webpack-plugin": "^1.5.0",
+        "prettier": "^2.0.5",
+        "ts-jest": "^24.0.2",
+        "ts-pnp": "^1.1.2",
+        "typescript": "~4.5.5",
+        "webpack": "^5.92.1",
+        "webpack-cli": "^3.3.4",
+        "webpack-merge": "^4.2.2",
+        "webpack-stream": "^7.0.0",
+        "yargs": "^13.2.4"
+    },
+    "description": "- Download & Install [nodejs](https://nodejs.org/en/download/)\r - Download & Install npm\r - Setup node & npm in enviroment path",
+    "main": "lib/generated_module/src/index.js",
+    "author": ""
+}

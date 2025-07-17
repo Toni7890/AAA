@@ -1,0 +1,50 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_dma_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-dma-v1",
+                "version": "1.0.0"
+            },
+            "isRequired": true
+        },
+        "cpu_interface": {
+            "interfaceId": {
+                "name": "cpu-interface",
+                "version": "1.0.0"
+            }
+        },
+        "interrupt_standard": {
+            "interfaceId": {
+                "name": "interrupt-standard",
+                "version": "^1.0.1"
+            }
+        },
+        "initializer_system": {
+            "interfaceId": {
+                "name": "initializer-system",
+                "version": "^0.*"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {
+        "dma_standard_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "dma-standard-interface",
+                        "version": "1.0.2"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": true
+}

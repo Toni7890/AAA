@@ -1,0 +1,62 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_i2c_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-i2c-v1",
+                "version": "^1.0.0"
+            },
+            "isRequired": true
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1"
+            }
+        },
+        "osc_clocks": {
+            "interfaceId": {
+                "name": "osc-clocks",
+                "version": "^0"
+            }
+        },
+        "initializer_system": {
+            "interfaceId": {
+                "name": "initializer-system",
+                "version": "^0"
+            }
+        },
+        "interrupt_standard": {
+            "interfaceId": {
+                "name": "interrupt-standard",
+                "version": "^1"
+            }
+        },
+        "pin_standard": {
+            "interfaceId": {
+                "name": "pin-standard",
+                "version": "^0"
+            }
+        }
+    },
+    "exports": {
+        "i2c_basic": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "i2c-host-basic",
+                        "version": "1.0.0"
+                    }
+                },
+                {
+                    "interfaceId": {
+                        "name": "i2c-client-basic",
+                        "version": "2.0.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": false
+}

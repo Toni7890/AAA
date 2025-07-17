@@ -1,0 +1,73 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_uart_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-uart-v1",
+                "version": "^1.0.0"
+            },
+            "isRequired": true
+        },
+        "fosc": {
+            "interfaceId": {
+                "name": "fosc-hz",
+                "version": "^0.3.0"
+            }
+        },
+        "osc_clocks": {
+            "interfaceId": {
+                "name": "osc-clocks",
+                "version": "^0"
+            }
+        },
+        "initializer_system": {
+            "interfaceId": {
+                "name": "initializer-system",
+                "version": "^0"
+            }
+        },
+        "interrupt_standard": {
+            "interfaceId": {
+                "name": "interrupt-standard",
+                "version": "^1"
+            }
+        },
+        "pin_standard": {
+            "interfaceId": {
+                "name": "pin-standard",
+                "version": "^0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1"
+            }
+        }
+    },
+    "exports": {
+        "uart_basic": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "uart-basic",
+                        "version": "6.1.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        },
+        "uart_lin": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "uart-lin",
+                        "version": "0.1.3"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": true
+}

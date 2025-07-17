@@ -1,0 +1,31 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_power_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-power-v1",
+                "version": "^1.*"
+            },
+            "isRequired": true
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.*"
+            }
+        }
+    },
+    "exports": {
+        "power_basic_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "power-basic-interface",
+                        "version": "1.0.0"
+                    }
+                }
+            ]
+        }
+    },
+    "isEntryPoint": false
+}

@@ -1,0 +1,31 @@
+{
+    "payload": null,
+    "imports": {
+        "basic_spi_master": {
+            "interfaceId": {
+                "name": "spi-master-basic",
+                "version": "^1.1.0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {
+        "spi_host_drv_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "spi-host-drv-interface",
+                        "version": "1.1.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": true
+}

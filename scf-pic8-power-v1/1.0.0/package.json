@@ -1,0 +1,190 @@
+{
+    "name": "@mchp-mcc/scf-pic8-power-v1",
+    "version": "1.0.0",
+    "scf": {
+        "reducer": "auto",
+        "processor": "output/processor.js",
+        "creator": "output/creator.js",
+        "autoProcessor": "output/autoProcessor.js",
+        "autoCreator": "output/autoCreator.js",
+        "nullPrototype": "output/nullPrototype.json",
+        "views": {
+            "main": "auto"
+        },
+        "displayName": "Power",
+        "category": "System",
+        "prototype": {
+            "payload": null,
+            "imports": {
+                "scf_pic8_power_v1": {
+                    "interfaceId": {
+                        "name": "scf-pic8-power-v1",
+                        "version": "^1.*"
+                    },
+                    "isRequired": true
+                },
+                "device_meta": {
+                    "interfaceId": {
+                        "name": "device-meta",
+                        "version": "^1.*"
+                    }
+                }
+            },
+            "exports": {
+                "power_basic_interface": {
+                    "interfaces": [
+                        {
+                            "interfaceId": {
+                                "name": "power-basic-interface",
+                                "version": "1.0.0"
+                            }
+                        }
+                    ]
+                }
+            },
+            "isEntryPoint": false
+        }
+    },
+    "scf-automodule": {
+        "peripheral": {
+            "deviceName": "PIC18F57Q43",
+            "interfaceId": {
+                "name": "scf-pic8-power-v1",
+                "version": "any"
+            },
+            "instance": "any"
+        },
+        "shouldNotifyOnDeploy": false,
+        "mode": "standard",
+        "hookPaths": {}
+    },
+    "jenkinsPipeline": "MCU8_DS_PIPELINE_2XY",
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "scripts": {
+        "build": "gulp build --gulpfile config/gulpfile.js --cwd .",
+        "build-dev": "gulp build --gulpfile config/gulpfile.js --buildDev --cwd .",
+        "build-prod": "gulp build --gulpfile config/gulpfile.js --production --cwd .",
+        "start": "gulp start --gulpfile config/gulpfile.js --cwd .",
+        "test": "jest",
+        "create-auto-module": "gulp create-auto-module --gulpfile config/gulpfile.js --cwd .",
+        "build-run-dir": "node config/extract-run-directory.js",
+        "build-latest-run-dir": "yarn add @microchip/run-directory && node config/extract-run-directory.js",
+        "dist": "gulp dist --gulpfile config/gulpfile.js --cwd .",
+        "lint:nofix": "eslint \"./src/**/*.{ts,tsx}\" --quiet",
+        "lint": "tsc --noEmit && yarn lint:nofix --fix",
+        "updateProject": "node config/create-auto-module.js --updateProject=true",
+        "update-auto-module": "yarn add @microchip/scf-automodule -D && yarn upgrade @microchip/melody-automodule-interface && yarn updateProject",
+        "postprocess": "node config/appendPrototype.js",
+        "test:itf:all": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --sf=module.major.test.ts --df=\"PIC18F57Q43|PIC18F04Q40\"",
+        "test:itf:dev": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --sf=module.major.test.ts --df=\"PIC18F47Q43\""
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsc --noEmit && lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./src/**/*.{ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "files": [
+        "output/**/*"
+    ],
+    "jest": {
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/run/",
+            "/generated_module/examples/",
+            "/lib/",
+            "/tests/itf/"
+        ],
+        "modulePathIgnorePatterns": [
+            "<rootDir>/run"
+        ],
+        "preset": "ts-jest",
+        "collectCoverage": true,
+        "coverageThreshold": {
+            "./src": {
+                "branches": 80,
+                "functions": 80,
+                "lines": 80,
+                "statements": 80
+            }
+        }
+    },
+    "dependencies": {
+        "@mchp-mcc/pic-8bit": "^5.28.3",
+        "@mchp-mcc/pic-8bit-types": "^5.28.3",
+        "@microchip/api-prefix-registration": "^0.1.0",
+        "@microchip/fosc-hz": "^0.1.2",
+        "@microchip/run-directory": "^4.3.3",
+        "@microchip/scf-common": "^3.22.7",
+        "@microchip/scf-device": "^8.11.1",
+        "@microchip/scf-integration-test": "^1.0.0",
+        "@microchip/scf-interface": "^1.4.0",
+        "@microchip/scf-register-view-helper": "^2.8.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.6",
+        "@babel/plugin-proposal-class-properties": "^7.10.1",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/preset-react": "^7.9.4",
+        "@babel/preset-typescript": "^7.9.0",
+        "@microchip/ccl-itf": "^1.7.0",
+        "@microchip/initializer-system": "^0.5.3",
+        "@microchip/melody-automodule-interface": "^1.15.0",
+        "@microchip/power-basic-interface": "^1.0.0",
+        "@microchip/scf-automodule": "^5.14.6",
+        "@microchip/scf-automodule-impl": "^1.16.4",
+        "@microchip/scf-autoview": "^3.32.5",
+        "@microchip/scf-project-scripts": "^1.0.0",
+        "@types/core-js": "^2.5.1",
+        "@types/enzyme": "^3.9.3",
+        "@types/jest": "^24.0.14",
+        "@types/lodash.filter": "^4.6.6",
+        "@types/lodash.find": "^4.6.6",
+        "@types/lodash.map": "^4.6.13",
+        "@types/node": "^12.0.10",
+        "@types/properties-reader": "^0.0.1",
+        "@types/semver": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^3.2.0",
+        "@typescript-eslint/parser": "^3.6.0",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-named-asset-import": "^0.3.2",
+        "babel-preset-react-app": "^9.0.0",
+        "del": "^4.1.1",
+        "eslint": "^7.4.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.20.0",
+        "fork-ts-checker-webpack-plugin": "^8.0.0",
+        "fs": "^0.0.1-security",
+        "gulp": "^4.0.2",
+        "gulp-changed": "^4.0.2",
+        "gulp-cli": "^2.2.0",
+        "gulp-if": "^3.0.0",
+        "gulp-typescript": "^5.0.1",
+        "hard-source-webpack-plugin": "^0.13.1",
+        "husky": "^4.2.4",
+        "is-wsl": "^2.1.0",
+        "jest": "^24.8.0",
+        "jest-pnp-resolver": "^1.2.1",
+        "lint-staged": "^10.2.2",
+        "pnp-webpack-plugin": "^1.5.0",
+        "prettier": "^2.0.5",
+        "ts-jest": "^24.0.2",
+        "ts-pnp": "^1.1.2",
+        "typescript": "~4.5.5",
+        "webpack": "^5.92.1",
+        "webpack-cli": "^3.3.4",
+        "webpack-merge": "^4.2.2",
+        "webpack-stream": "^7.0.0",
+        "yargs": "^13.2.4"
+    },
+    "description": "MCC PLIB Module",
+    "main": "lib/generated_module/src/index.js"
+}

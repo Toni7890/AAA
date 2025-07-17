@@ -1,0 +1,86 @@
+{
+    "payload": null,
+    "imports": {
+        "scf_pic8_tmr0_v1": {
+            "interfaceId": {
+                "name": "scf-pic8-tmr0-v1",
+                "version": "^1.0.0"
+            },
+            "isRequired": true
+        },
+        "clock_basic_interface": {
+            "interfaceId": {
+                "name": "clock-basic-interface",
+                "version": "^1"
+            }
+        },
+        "sys_init_basic_interface": {
+            "interfaceId": {
+                "name": "sys-init-basic-interface",
+                "version": "^1"
+            }
+        },
+        "interrupt_standard": {
+            "interfaceId": {
+                "name": "interrupt-standard",
+                "version": "^1"
+            }
+        },
+        "pins_interface": {
+            "interfaceId": {
+                "name": "pins-interface",
+                "version": "^1"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1"
+            }
+        }
+    },
+    "exports": {
+        "timer_periodic": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "timer-periodic",
+                        "version": "2.1.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        },
+        "timer0_general": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "timer0_general_parameters",
+                        "version": "0.1.0"
+                    }
+                }
+            ]
+        },
+        "timer_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "timer_interface",
+                        "version": "0.0.1"
+                    }
+                }
+            ]
+        },
+        "timer_timeout": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "timer-timeout",
+                        "version": "0.1.2"
+                    }
+                }
+            ]
+        }
+    },
+    "isEntryPoint": true
+}
