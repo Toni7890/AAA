@@ -1,0 +1,30 @@
+{
+    "payload": null,
+    "imports": {
+        "i2c_client_basic": {
+            "interfaceId": {
+                "name": "i2c-client-basic",
+                "version": ">= 2.0.0 < 4.0.0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {
+        "i2c_client_basic_drv_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "i2c-client-basic-drv-interface",
+                        "version": "1.0.0"
+                    }
+                }
+            ]
+        }
+    },
+    "isEntryPoint": true
+}

@@ -1,0 +1,142 @@
+{
+  "name": "@mchp-mcc/pic18-pin-manager",
+  "version": "3.7.1",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "scripts": {
+    "build": "gulp build --gulpfile config/gulpfile.js --cwd .",
+    "start": "gulp start --gulpfile config/gulpfile.js --cwd .",
+    "test": "jest",
+    "build-run-dir": "node config/extract-run-directory.js",
+    "build-latest-run-dir": "yarn add @microchip/run-directory && yarn build-run-dir",
+    "dist": "gulp dist --gulpfile config/gulpfile.js",
+    "update-microchip": "yarn add @microchip/scf-common @microchip/scf-device @microchip/pin-standard @microchip/run-directory",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "lint:nofix": "eslint \"src/**/*.{ts,tsx}\"",
+    "test:itf:all": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --df=\"PIC18F47Q43|PIC18F24Q10|PIC18F54Q71|PIC18F16Q41|PIC18F26K42\"",
+    "test:itf:dev": "node ./node_modules/@microchip/ccl-itf/lib/index.js --sp=./tests/itf --rd=./run --sf=pic18_pins.major.test.ts --df=\"PIC18F47Q43|PIC18F24Q10|PIC18F54Q71|PIC18F16Q41|PIC18F26K42\"",
+    "postprocess": "echo 'postprocess Not required'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "files": [
+    "output/**/*",
+    "config.json",
+    "src/**/*"
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/run/",
+      "/tests/itf/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/run"
+    ],
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "./src": {
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "dependencies": {
+    "@microchip/initializer-system": "^0.*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@mchp-mcc/pic-8bit": "5.17.2-dev.3",
+    "@microchip/ccl-itf": "^1.6.0",
+    "@microchip/pin-architecture": "^1.3.0",
+    "@microchip/pin-standard": "^0.5.0",
+    "@microchip/run-directory": "^4.3.2",
+    "@microchip/scf-common": "^3.12.0",
+    "@microchip/scf-device": "^8.8.0",
+    "@types/core-js": "^2.5.1",
+    "@types/jest": "^24.0.14",
+    "@types/node": "^12.0.10",
+    "@types/properties-reader": "^0.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "autoprefixer": "^9.7.3",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-named-asset-import": "^0.3.2",
+    "babel-preset-react-app": "^9.0.0",
+    "classnames": "^2.2.6",
+    "css-loader": "^3.3.2",
+    "del": "^4.1.1",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.20.6",
+    "file-loader": "^5.0.2",
+    "fork-ts-checker-webpack-plugin": "^1.3.7",
+    "fs": "^0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-typescript": "^5.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.4",
+    "is-wsl": "^2.1.0",
+    "jest": "^24.8.0",
+    "jest-css-modules": "^2.1.0",
+    "jest-html-reporter": "^2.5.0",
+    "jest-pnp-resolver": "^1.2.1",
+    "lint-staged": "^11.1.2",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "pnp-webpack-plugin": "^1.5.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-normalize": "^8.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-safe-parser": "^4.0.1",
+    "prettier": "^2.3.2",
+    "react-dev-utils": "^10.0.0",
+    "react-test-renderer": "^16.13.1",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "ts-jest": "^24.0.2",
+    "ts-json-schema-generator": "^0.82.0",
+    "ts-pnp": "^1.1.2",
+    "typescript": "^3.5.3",
+    "webpack": "^4.34.0",
+    "webpack-bundle-analyzer": "^4.3.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-merge": "^4.2.2",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^13.2.4"
+  },
+  "description": "- Download & Install [nodejs](https://nodejs.org/en/download/)\r - Download & Install npm\r - Setup node & npm in enviroment path",
+  "main": "lib/index.js",
+  "author": "",
+  "scf": {
+    "displayName": "Pins Driver",
+    "category": "System",
+    "reducer": "output/reducer.js",
+    "creator": "output/creator.js",
+    "processor": "output/processor.js"
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "payload": null,
+    "imports": {
+        "uart_basic": {
+            "interfaceId": {
+                "name": "uart-basic",
+                "version": "^6.0.0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {
+        "uart_basic_drv_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "uart-basic-drv-interface",
+                        "version": "2.3.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": true
+}

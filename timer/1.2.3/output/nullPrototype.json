@@ -1,0 +1,31 @@
+{
+    "payload": null,
+    "imports": {
+        "timer_periodic": {
+            "interfaceId": {
+                "name": "timer-periodic",
+                "version": "^2"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {
+        "timer_driver_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "timer-driver-interface",
+                        "version": "0.1.0"
+                    }
+                }
+            ],
+            "handleLimit": 1
+        }
+    },
+    "isEntryPoint": true
+}

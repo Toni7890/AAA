@@ -1,0 +1,20 @@
+{
+    "payload": null,
+    "imports": {
+        "osc_clocks": {
+            "interfaceId": {
+                "name": "osc-clocks",
+                "version": "^0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {},
+    "isSingletonPerDevice": true,
+    "isEntryPoint": true
+}

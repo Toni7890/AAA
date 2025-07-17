@@ -1,0 +1,121 @@
+{
+    "moduleName": "I2C_Client",
+    "deviceType": "PIC",
+    "booleanValues": {
+        "true": "enabled",
+        "false": "disabled"
+    },
+    "UIGroups": {
+        "software": "Software Settings",
+        "dependency": "Dependency Selector"
+    },
+    "UIOrder": {
+        "software": [
+            "*"
+        ]
+    },
+    "help": {
+        "url": "v2/keyword-lookup?keyword=I2C_Client_Melody_Driver&version=latest&redirect=true",
+        "tooltip": "Click here to open documentation."
+    },
+    "tabs": {
+        "main": "Easy View"
+    },
+    "displayViewOnImportAssigned": [
+        "i2c_client_basic"
+    ],
+    "imports": {
+        "i2c_client_basic": {
+            "import": {
+                "interfaceId": {
+                    "name": "i2c-client-basic",
+                    "version": ">= 2.0.0 < 4.0.0"
+                }
+            },
+            "nodeModule": {
+                "importName": "i2c_client_basic",
+                "node": "@microchip/i2c-client-basic"
+            }
+        },
+        "device_meta": {
+            "import": {
+                "interfaceId": {
+                    "name": "device-meta",
+                    "version": "^1.0.0"
+                }
+            }
+        }
+    },
+    "exports": {
+        "i2c_client_basic_drv_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "i2c-client-basic-drv-interface",
+                        "version": "1.0.0"
+                    }
+                }
+            ]
+        }
+    },
+    "softwareData": {
+        "customName": {
+            "name": "customName",
+            "description": "Custom Name",
+            "type": "string",
+            "defaultValue": "I2C_Client",
+            "group": "software",
+            "tabs": [
+                "main"
+            ],
+            "validation": true,
+            "category": "software"
+        },
+        "clockStretching": {
+            "name": "clockStretching",
+            "description": "Clock Stretching",
+            "type": "boolean",
+            "defaultValue": true,
+            "group": "software",
+            "tabs": [
+                "main"
+            ],
+            "category": "software"
+        },
+        "clientAddress": {
+            "name": "clientAddress",
+            "description": "Client Address",
+            "type": "hex",
+            "defaultValue": 0,
+            "group": "software",
+            "tabs": [
+                "main"
+            ],
+            "validation": true,
+            "category": "software"
+        },
+        "clientMask": {
+            "name": "clientMask",
+            "description": "Client Mask",
+            "type": "hex",
+            "defaultValue": 0,
+            "group": "software",
+            "tabs": [
+                "main"
+            ],
+            "validation": true,
+            "category": "software"
+        },
+        "depSelector": {
+            "name": "depSelector",
+            "category": "import",
+            "description": "I2C Client PLIB Selector",
+            "type": "ComboBox",
+            "group": "dependency",
+            "importId": "i2c_client_basic",
+            "tabs": [
+                "main"
+            ]
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "@mchp-mcc/local-catalog",
+    "version": "1.0.0",
+    "content": [
+        {
+            "name": "@mchp-mcc/i2c-client-driver",
+            "version": "*",
+            "meta": {
+                "keywords": [
+                    "avr",
+                    "pic8",
+                    "dspic",
+                    "driver",
+                    ""
+                ],
+                "name": "I2C_Client",
+                "category": "Drivers",
+                "description": "I2C driver for Client Mode",
+                "deviceFilterRegEx": ".*",
+                "defaultSelection": true,
+                "releaseNotesLink": "https://onlinedocs.microchip.com/v2/keyword-lookup?keyword\u003dMCC.MELODY.8BITAVR.RELEASENOTES\u0026version\u003dlatest\u0026redirect\u003dtrue"
+            }
+        }
+    ],
+    "catalogs": []
+}

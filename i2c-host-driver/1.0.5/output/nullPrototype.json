@@ -1,0 +1,19 @@
+{
+    "payload": null,
+    "imports": {
+        "i2c_host_basic": {
+            "interfaceId": {
+                "name": "i2c-host-basic",
+                "version": "^1.0.0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {},
+    "isEntryPoint": true
+}

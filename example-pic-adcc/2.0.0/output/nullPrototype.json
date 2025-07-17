@@ -1,0 +1,28 @@
+{
+    "payload": null,
+    "imports": {
+        "osc_clocks": {
+            "interfaceId": {
+                "name": "osc-clocks",
+                "version": "^0"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        },
+        "adc_computation_interface": {
+            "interfaceId": {
+                "name": "adc-computation-interface",
+                "version": "^1.0.0"
+            },
+            "isRequired": true,
+            "isAutoAssignable": false
+        }
+    },
+    "exports": {},
+    "isSingletonPerDevice": true,
+    "isEntryPoint": true
+}

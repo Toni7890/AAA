@@ -1,0 +1,7 @@
+{
+    "CMT" : {
+        "content":{
+            "@microchip/i2c-client-basic-drv-interface": "1.0.0"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "payload": null,
+    "imports": {
+        "main": {
+            "interfaceId": {
+                "name": "main-manager",
+                "version": "^1.*"
+            },
+            "isRequired": true
+        }
+    },
+    "exports": {
+        "main_basic_interface": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "main-basic-interface",
+                        "version": "1.0.0"
+                    }
+                }
+            ]
+        },
+        "initializer_main": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "initializer-main",
+                        "version": "0.4.0"
+                    }
+                }
+            ]
+        },
+        "api_prefix_registration": {
+            "interfaces": [
+                {
+                    "interfaceId": {
+                        "name": "api-prefix-registration",
+                        "version": "0.1.0"
+                    }
+                }
+            ]
+        }
+    },
+    "isEntryPoint": true
+}

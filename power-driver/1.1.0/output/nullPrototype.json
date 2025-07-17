@@ -1,0 +1,20 @@
+{
+    "payload": null,
+    "imports": {
+        "power_basic_interface": {
+            "interfaceId": {
+                "name": "power-basic-interface",
+                "version": "^1"
+            }
+        },
+        "device_meta": {
+            "interfaceId": {
+                "name": "device-meta",
+                "version": "^1.0.0"
+            }
+        }
+    },
+    "exports": {},
+    "isSingletonPerDevice": true,
+    "isEntryPoint": true
+}
